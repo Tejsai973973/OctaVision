@@ -342,12 +342,12 @@
     </section>
 
     <section id="weeks" class="page-content">
-        <h1 class="text-3xl md:text-5xl font-bold text-white mb-10">Weekly Roadmap</h1>
-        <div class="grid grid-cols-1 gap-6 mb-10">
-            <div class="glass-card p-6 md:p-8 rounded-3xl border border-neon/30 bg-neon/5 flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="text-center md:text-left">
+        <h1 class="text-5xl font-bold text-white mb-10">Weekly Roadmap</h1>
+        <div class="grid md:grid-cols-1 gap-6 mb-10">
+            <div class="glass-card p-8 rounded-3xl border border-neon/30 bg-neon/5 flex items-center justify-between">
+                <div>
                     <h3 class="text-xl font-bold text-white mb-2">Project Documentation Portal</h3>
-                    <p class="text-sm text-slate-400">Access the 66-page Design Thinking report and technical logs.</p>
+                    <p class="text-sm text-slate-400">Access the 66-page Design Thinking report, technical logs, and interview transcripts.</p>
                 </div>
                 <div class="flex gap-4">
                     <a href="OctaVision_documentation.pdf" target="_blank" class="bg-white/10 text-white px-6 py-3 rounded-xl font-bold text-xs flex items-center gap-2 border border-white/10 hover:bg-white/20 transition">
@@ -356,17 +356,34 @@
                 </div>
             </div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="glass-card p-6 rounded-2xl"><div class="text-neon font-bold mb-1">Week 1-2</div><h4 class="text-white text-sm mb-2">Theory & Research</h4></div>
-            <div class="glass-card p-6 rounded-2xl border-l-4 border-violet-500">
-                <div class="flex justify-between items-center mb-2">
-                    <div class="text-neon font-bold">Week 3-4</div>
-                    <a href="YOUR_INTERVIEW_PDF_LINK_HERE" target="_blank" class="text-violet-400 text-xs">INTERVIEW PDF</a>
-                </div>
-                <h4 class="text-white text-sm">User Interviews</h4>
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="glass-card p-6 rounded-2xl">
+                <div class="text-neon font-bold mb-1">Week 1-2</div>
+                <h4 class="text-white text-sm mb-2">Anatomy & Existing Tech</h4>
+                <p class="text-xs text-slate-500">Researching motor imagery and linguistic barriers in existing BCI models.</p>
             </div>
-            <div class="glass-card p-6 rounded-2xl"><div class="text-neon font-bold mb-1">Week 5-6</div><h4 class="text-white text-sm">Hardware Setup</h4></div>
-            <div class="glass-card p-6 rounded-2xl border-t-2 border-neon"><div class="text-neon font-bold mb-1">Week 7-10</div><h4 class="text-white text-sm">Deployment</h4></div>
+            <div class="glass-card p-6 rounded-2xl border-l-4 border-violet-500 flex flex-col justify-between">
+                <div>
+                    <div class="text-neon font-bold mb-1">Week 3-4</div>
+                    <h4 class="text-white text-sm mb-2">User Interviews</h4>
+                    <p class="text-xs text-slate-500">Deep-dive survey with caregivers and patients to map empathy and pain points.</p>
+                </div>
+                <div class="mt-4">
+                    <a href="YOUR_INTERVIEW_PDF_LINK_HERE" target="_blank" class="bg-violet-600/20 text-violet-400 border border-violet-500/20 px-3 py-2 rounded-lg font-bold text-[10px] hover:bg-violet-600/40 transition flex items-center gap-2 w-fit">
+                        <i class="fa-solid fa-file-pdf"></i> INTERVIEW PDF
+                    </a>
+                </div>
+            </div>
+            <div class="glass-card p-6 rounded-2xl">
+                <div class="text-neon font-bold mb-1">Week 5-6</div>
+                <h4 class="text-white text-sm mb-2">Ideation & Hardware</h4>
+                <p class="text-xs text-slate-500">Finalizing the hybrid AI communicator concept and sourcing electronics.</p>
+            </div>
+            <div class="glass-card p-6 rounded-2xl border-t-2 border-neon">
+                <div class="text-neon font-bold mb-1 text-neon">Week 7-10</div>
+                <h4 class="text-white text-sm mb-2">Development & Deployment</h4>
+                <p class="text-xs text-slate-500">CNN+LSTM coding, Streamlit dashboard integration, and final model validation.</p>
+            </div>
         </div>
     </section>
 
@@ -375,14 +392,15 @@
         <div class="flex flex-col lg:flex-row gap-8">
             <div class="flex-1 glass-card p-12 md:p-16 rounded-[48px] text-center" data-aos="zoom-in">
                 <h1 class="text-6xl md:text-8xl font-black text-neon mb-4">64%</h1>
-                <p class="text-lg md:text-xl font-bold text-white uppercase">Accuracy</p>
-                <p class="text-[10px] text-slate-500 mt-4">BCI Competition IV Subject 'aa'</p>
+                <p class="text-lg md:text-xl font-bold text-white uppercase">Classification Accuracy</p>
+                <p class="text-[10px] text-slate-500 mt-4">Validated using BCI Competition IV (Subject 'aa') data.</p>
             </div>
             <div class="flex-1 glass-card p-8 md:p-10 rounded-3xl">
                 <h3 class="text-2xl font-bold text-white mb-6">Performance</h3>
                 <ul class="space-y-4">
-                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-green-500 mt-1 mr-3"></i> <div><h5 class="text-sm font-bold text-white">Recognition</h5><p class="text-xs text-slate-500">Intent markers identified correctly.</p></div></li>
-                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-green-500 mt-1 mr-3"></i> <div><h5 class="text-sm font-bold text-white">Speed</h5><p class="text-xs text-slate-500">Latency achieved under 0.5s.</p></div></li>
+                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-green-500 mt-1 mr-3"></i> <div><h5 class="text-sm font-bold text-white">Signal Recognition</h5><p class="text-xs text-slate-500">Motor imagery successfully identified across multiple trials.</p></div></li>
+                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-green-500 mt-1 mr-3"></i> <div><h5 class="text-sm font-bold text-white">Prediction Speed</h5><p class="text-xs text-slate-500">Simulated live latency achieved at under 0.5s per thought process.</p></div></li>
+                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-green-500 mt-1 mr-3"></i> <div><h5 class="text-sm font-bold text-white">UI Interaction</h5><p class="text-xs text-slate-500">Stable integration between AI backend and Streamlit frontend.</p></div></li>
                 </ul>
             </div>
         </div>
@@ -391,9 +409,9 @@
     <section id="conclusion" class="page-content">
         <h1 class="text-3xl md:text-5xl font-bold text-white mb-10 text-center sm:text-left">Conclusion</h1>
         <div class="glass-card p-10 md:p-20 rounded-[40px] md:rounded-[60px] text-center" data-aos="fade-up">
-            <h2 class="text-2xl md:text-4xl font-bold text-white mb-10">Neural Sovereignty</h2>
+            <h2 class="text-2xl md:text-4xl font-bold text-white mb-10">Neural Sovereignty Achieved</h2>
             <p class="text-md md:text-xl text-slate-400 leading-relaxed italic mb-10">
-                "OctaVision successfully established a reliable bridge between thought and digital expression, creating a high-accuracy platform that restores independence."
+                "OctaVision successfully established a reliable bridge between thought and digital expression. By fusing advanced spatial-temporal deep learning with non-invasive EEG technology, we have created an accessible, high-accuracy platform that restores communication and independence to those who need it most."
             </p>
             <div class="h-px w-32 bg-neon/30 mx-auto"></div>
         </div>
