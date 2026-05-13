@@ -43,6 +43,7 @@
         <button onclick="nav('interviews')" id="btn-interviews" class="nav-btn w-full text-left px-4 py-3"><i class="fa-solid fa-microphone mr-3 w-5"></i>Primary Interviews</button>
         <button onclick="nav('solutions')" id="btn-solutions" class="nav-btn w-full text-left px-4 py-3"><i class="fa-solid fa-wand-magic-sparkles mr-3 w-5"></i>Proposed Solutions</button>
         <button onclick="nav('hardware')" id="btn-hardware" class="nav-btn w-full text-left px-4 py-3"><i class="fa-solid fa-gears mr-3 w-5"></i>Hardware Architecture</button>
+        <button onclick="nav('dataset')" id="btn-dataset" class="nav-btn w-full text-left px-4 py-3"><i class="fa-solid fa-database mr-3 w-5"></i>Dataset Details</button>
         
         <div class="text-[10px] uppercase text-slate-600 font-black mt-6 mb-2 px-4 tracking-widest">Development Phase</div>
         <button onclick="nav('mlmodel')" id="btn-mlmodel" class="nav-btn w-full text-left px-4 py-3"><i class="fa-solid fa-robot mr-3 w-5"></i>Hybrid AI Engine</button>
@@ -79,8 +80,30 @@
             </p>
             <div class="flex gap-6">
                 <button onclick="nav('overview')" class="bg-neon text-black px-10 py-4 rounded-2xl font-bold hover:scale-105 transition">Explore Archive</button>
-                <div class="flex items-center gap-4 text-slate-600 font-bold px-6">
-                    <span class="h-px w-8 bg-slate-800"></span>
+            </div>
+        </div>
+    </section>
+
+    <section id="dataset" class="page-content">
+        <h1 class="text-5xl font-bold text-white mb-10">Neural Dataset</h1>
+        <div class="glass-card p-10 rounded-3xl">
+            <h3 class="text-2xl font-bold text-neon mb-6">BCI Competition IV (Dataset IVa)</h3>
+            <p class="text-slate-300 mb-8 leading-relaxed">
+                This project utilizes high-resolution EEG recordings from subject 'aa'. The data includes 118 EEG channels sampled at 100Hz. The focus is on Motor Imagery tasks, specifically distinguishing between the imagination of right hand and foot movements.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="p-6 bg-slate-900/50 rounded-2xl border border-white/5">
+                    <h4 class="text-white font-bold mb-2">Intent Mapping</h4>
+                    <ul class="text-sm text-slate-400 space-y-2">
+                        <li><i class="fa-solid fa-hand-pointer text-neon mr-2"></i> Right Hand Imagery ➔ <b>YES</b></li>
+                        <li><i class="fa-solid fa-shoe-prints text-neon mr-2"></i> Right Foot Imagery ➔ <b>NO</b></li>
+                    </ul>
+                </div>
+                <div class="p-6 bg-slate-900/50 rounded-2xl border border-white/5">
+                    <h4 class="text-white font-bold mb-2">Data Characteristics</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        Multichannel time-series data processed via a 5th-order Butterworth filter (0.5-40Hz) to extract clean neural markers from motor cortex oscillations.
+                    </p>
                 </div>
             </div>
         </div>
@@ -261,12 +284,12 @@
         <h1 class="text-5xl font-bold text-white mb-10">Hybrid AI Engine</h1>
         <div class="space-y-8">
             <div class="glass-card p-10 rounded-3xl relative">
-                <div class="absolute top-6 right-10">
-                    <a href="https://octavision-ai-model.streamlit.app/" target="_blank" blank" class="bg-violet-600/20 text-violet-400 border border-violet-500/20 px-3 py-2 rounded-lg font-bold text-[10px] hover:bg-violet-600/40 transition flex items-center gap-2 w-fit">
+                <div class="absolute top-6 right-10 flex gap-2">
+                    <a href="https://octavision-ai-model.streamlit.app/" target="_blank" class="bg-violet-600/20 text-violet-400 border border-violet-500/20 px-3 py-2 rounded-lg font-bold text-[10px] hover:bg-violet-600/40 transition flex items-center gap-2 w-fit">
                         <i class="fa-solid fa-play"></i> Launch & Test Model
                     </a>
-                    <a href="model_app/data_set_IVa_aa.mat" download class="bg-blue-600/20 text-blue-400 border border-blue-500/30 px-6 py-3 rounded-xl font-bold text-xs flex items-center gap-2 hover:bg-blue-600/40 transition">
-                        <i class="fa-solid fa-database text-lg"></i> Download Dataset (70MB)
+                    <a href="model_app/data_set_IVa_aa.mat" download class="bg-blue-600/20 text-blue-400 border border-blue-500/20 px-3 py-2 rounded-lg font-bold text-[10px] hover:bg-blue-600/40 transition flex items-center gap-2 w-fit">
+                        <i class="fa-solid fa-database"></i> Download Dataset
                     </a>
                 </div>
                 <h3 class="text-2xl font-bold text-neon mb-6">CNN + LSTM Architecture</h3>
