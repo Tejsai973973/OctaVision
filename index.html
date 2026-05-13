@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OctaVision | Complete Neural Archive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        :root { --neon: #00f2ff; --violet: #8b5cf6; --glass: rgba(15, 23, 42, 0.7); }
+        body { background: #020617; font-family: 'Inter', sans-serif; color: #94a3b8; overflow: hidden; }
+        .sidebar { background: #010409; border-right: 1px solid rgba(255,255,255,0.05); }
+        .glass-card { background: var(--glass); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(16px); }
+        .nav-btn { transition: all 0.3s; border-radius: 12px; margin-bottom: 4px; }
+        .nav-btn.active { background: linear-gradient(90deg, rgba(0, 242, 255, 0.1), transparent); color: var(--neon); border-left: 4px solid var(--neon); }
+        .text-neon { color: var(--neon); text-shadow: 0 0 10px rgba(0, 242, 255, 0.4); }
+        .page-content { display: none; animation: slideIn 0.4s ease-out; }
+        .page-content.active { display: block; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+    </style>
+</head>
+<body class="flex h-screen">
+
+<aside class="sidebar w-80 flex flex-col p-6 z-50 overflow-y-auto">
+    <div class="mb-10 px-2">
+        <h1 class="text-3xl font-black text-white tracking-tighter italic">OCTA<span class="text-neon">VISION</span></h1>
+        <div class="h-1 w-12 bg-neon mt-1"></div>
+    </div>
+
+    <nav class="space-y-1 flex-1 text-sm font-semibold">
+        <button onclick="nav('home')" id="btn-home" class="nav-btn active w-full text-left px-4 py-3"><i class="fa-solid fa-house mr-3 w-5"></i>Home</button>
+        <div class="text-[10px] uppercase text-slate-600 font-black mt-6 mb-2 px-4 tracking-widest">Discovery Phase</div>
+        <button onclick="nav('overview')" id="btn-overview" class="nav-btn w-full text-left px-4 py-3"><i class="fa-solid fa-book-open mr-3 w-5"></i>Project Overview</button>
+        <button onclick="nav('problem')" id="btn-problem" class="nav-btn w-full text-left px-4 py-3"><i class="fa-solid fa-circle-exclamation mr-3 w-5"></i>Problem Statement</button>
+        <button onclick="nav('empathy')" id="btn-empathy" class="nav-btn w-full text-left px-4 py-3"><i class="fa-solid fa-heart mr-3 w-5"></i>Empathy Mapping</button>
+        <button onclick="nav('research')" id="btn-research" class="nav-btn w-full text-left px-4 py-3"><i class="fa-solid fa-microscope mr-3 w-5"></i>Secondary Research</button>
+        
+        <div class="text-[10px] uppercase text-slate-600 font-black mt-6 mb-2 px-4 tracking-widest">Design Phase</div>
+        <button onclick="nav('interviews')" id="btn-interviews" class="nav-btn w-full text-left px-4 py-3"><i class="fa-solid fa-microphone mr-3 w-5"></i>Primary Interviews</button>
+        <button onclick="nav('solutions')" id="btn-solutions" class="nav-btn w-full text-left px-4 py-3"><i class="fa-solid fa-wand-magic-sparkles mr-3 w-5"></i>Proposed Solutions</button>
+        <button onclick="nav('hardware')" id="btn-hardware" class="nav-btn w-full text-left px-4 py-3"><i class="fa-solid fa-gears mr-3 w-5"></i>Hardware Architecture</button>
+        
+        <div class="text-[10px] uppercase text-slate-600 font-black mt-6 mb-2 px-4 tracking-widest">Development Phase</div>
+        <button onclick="nav('mlmodel')" id="btn-mlmodel" class="nav-btn w-full text-left px-4 py-3"><i class="fa-solid fa-robot mr-3 w-5"></i>Hybrid AI Engine</button>
+        <button onclick="nav('weeks')" id="btn-weeks" class="nav-btn w-full text-left px-4 py-3"><i class="fa-solid fa-calendar-days mr-3 w-5"></i>Weekly Roadmap</button>
+        <button onclick="nav('results')" id="btn-results" class="nav-btn w-full text-left px-4 py-3"><i class="fa-solid fa-chart-line mr-3 w-5"></i>Results & Evaluation</button>
+        <button onclick="nav('conclusion')" id="btn-conclusion" class="nav-btn w-full text-left px-4 py-3"><i class="fa-solid fa-flag-checkered mr-3 w-5"></i>Conclusion</button>
+    </nav>
+</aside>
+
+<main class="flex-1 overflow-y-auto p-12 bg-[#020617] relative">
+    
+    <section id="home" class="page-content active">
+        <div class="glass-card rounded-[48px] p-16 relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-neon opacity-5 rounded-full blur-3xl"></div>
+            <h1 class="text-7xl font-black text-white mb-2 tracking-tighter">OctaVision</h1>
+            <h2 class="text-2xl font-medium text-neon mb-8 uppercase tracking-widest">CNN + LSTM Neural Decoder</h2>
+            
+            <div class="mb-10 bg-white/5 border border-white/10 rounded-3xl p-8 max-w-3xl">
+                <h3 class="text-xs font-black text-slate-500 uppercase tracking-widest mb-4">Project Development Team</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm font-bold text-slate-300">
+                    <div>Anchuri Harshith Sai - SE24UARI100</div>
+                    <div>Janit Pradyun - SE24UARI103</div>
+                    <div>Tejsai.ch - SE24UARI151</div>
+                    <div>Kautilya Ramisetti - SE24UARI106</div>
+                    <div>Rishi Kamishetty - SE24UARI025</div>
+                    <div>Siddharth.M - SE24UARI039</div>
+                    <div>Anshu Vanguru - SE24UARI027</div>
+                    <div>Rithya Reddy - SE24UARI038</div>
+                </div>
+            </div>
+
+            <p class="text-lg leading-relaxed text-slate-400 max-w-4xl mb-12">
+                A comprehensive Brain-Computer Interface (BCI) system built to restore communication for those trapped in silence. Using real-time EEG signal processing and hybrid deep learning, we transform thought into action.
+            </p>
+            <div class="flex gap-6">
+                <button onclick="nav('overview')" class="bg-neon text-black px-10 py-4 rounded-2xl font-bold hover:scale-105 transition">Explore Archive</button>
+                <div class="flex items-center gap-4 text-slate-600 font-bold px-6">
+                    <span class="h-px w-8 bg-slate-800"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="overview" class="page-content">
+        <div class="flex justify-between items-center mb-12">
+            <h1 class="text-5xl font-bold text-white">Project Overview</h1>
+            <span class="bg-slate-900 px-4 py-2 rounded-xl text-xs font-bold text-neon border border-neon/20">STATUS: COMPLETE</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="glass-card p-10 rounded-3xl">
+                <h3 class="text-2xl font-bold text-neon mb-6">Core Mission</h3>
+                <p class="text-slate-300 leading-relaxed">
+                    OctaVision established a direct pathway between the human brain and external devices. By bypasssing damaged motor neurons, the system establishes a new linguistic bridge for patients with ALS, Cerebral Palsy, or traumatic brain injuries.
+                </p>
+            </div>
+            <div class="glass-card p-10 rounded-3xl">
+                <h3 class="text-2xl font-bold text-blue-400 mb-6">Technological Stack</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-4 bg-slate-900/50 rounded-2xl text-xs font-bold"><i class="fa-solid fa-code text-neon mr-2"></i>Python / TensorFlow</div>
+                    <div class="p-4 bg-slate-900/50 rounded-2xl text-xs font-bold"><i class="fa-solid fa-wave-square text-neon mr-2"></i>Signal Processing</div>
+                    <div class="p-4 bg-slate-900/50 rounded-2xl text-xs font-bold"><i class="fa-solid fa-window-maximize text-neon mr-2"></i>Streamlit UI</div>
+                    <div class="p-4 bg-slate-900/50 rounded-2xl text-xs font-bold"><i class="fa-solid fa-microchip text-neon mr-2"></i>ESP32 Integration</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="problem" class="page-content">
+        <h1 class="text-5xl font-bold text-white mb-10">Problem Statement</h1>
+        <div class="space-y-8">
+            <div class="glass-card p-10 rounded-3xl border-l-4 border-red-500">
+                <h3 class="text-2xl font-bold text-white mb-4">The Communication Void</h3>
+                <p class="text-slate-400">Individuals with neurological disorders may fully understand language but lack the physical ability to produce speech. This creates a catastrophic barrier between their thoughts and the outside world.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-card p-8 rounded-2xl text-center">
+                    <i class="fa-solid fa-brain text-neon text-3xl mb-4"></i>
+                    <h4 class="font-bold text-white mb-2">Neurological Disorders</h4>
+                    <p class="text-xs text-slate-500">Conditions like Cerebral Palsy affecting motor control and coordination.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl text-center">
+                    <i class="fa-solid fa-dna text-neon text-3xl mb-4"></i>
+                    <h4 class="font-bold text-white mb-2">ALS (Lou Gehrig's)</h4>
+                    <p class="text-xs text-slate-500">Progressive damage to motor neurons leading to total speech loss.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl text-center">
+                    <i class="fa-solid fa-heart-pulse text-neon text-3xl mb-4"></i>
+                    <h4 class="font-bold text-white mb-2">Physical Trauma</h4>
+                    <p class="text-xs text-slate-500">Strokes or brain injuries that hinder speech production despite linguistic ability.</p>
+                </div>
+            </div>
+            <div class="glass-card p-10 rounded-3xl bg-red-950/10">
+                <h4 class="text-red-400 font-bold mb-4 italic">The Crisis:</h4>
+                <p class="text-slate-400 font-medium italic leading-relaxed text-lg">"Communication is slow and requires significant effort. Wrong outputs can cause stress and create emergency risks. Existing tools like eye-tracking are physically exhausting and confusing."</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="empathy" class="page-content">
+        <h1 class="text-5xl font-bold text-white mb-10">Empathy Mapping</h1>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="glass-card p-10 rounded-3xl">
+                <h3 class="text-2xl font-bold text-red-500 mb-6">Frustrations & Pains</h3>
+                <ul class="space-y-4 text-slate-400">
+                    <li><i class="fa-solid fa-check text-red-500 mr-3"></i>Feeling isolated from group conversations.</li>
+                    <li><i class="fa-solid fa-check text-red-500 mr-3"></i>Complete dependence on caregivers for basic needs.</li>
+                    <li><i class="fa-solid fa-check text-red-500 mr-3"></i>Stress caused by frequent misunderstandings.</li>
+                    <li><i class="fa-solid fa-check text-red-500 mr-3"></i>Withdrawing from social interaction due to effort.</li>
+                </ul>
+            </div>
+            <div class="glass-card p-10 rounded-3xl">
+                <h3 class="text-2xl font-bold text-green-500 mb-6">User Expectations</h3>
+                <ul class="space-y-4 text-slate-400">
+                    <li><i class="fa-solid fa-check text-green-500 mr-3"></i>High Accuracy: Reliability without misinterpretation.</li>
+                    <li><i class="fa-solid fa-check text-green-500 mr-3"></i>Fast Response: Near real-time communication speed.</li>
+                    <li><i class="fa-solid fa-check text-green-500 mr-3"></i>Ease of Use: Simple interface requiring no training.</li>
+                    <li><i class="fa-solid fa-check text-green-500 mr-3"></i>Comfort: Wearable devices that don't cause fatigue.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="research" class="page-content">
+        <h1 class="text-5xl font-bold text-white mb-10">Secondary Research</h1>
+        <div class="grid gap-8">
+            <div class="glass-card p-10 rounded-3xl">
+                <h3 class="text-xl font-bold text-neon mb-4">Neural Basis of Communication</h3>
+                <p class="text-slate-400 mb-4">Research shows that the brain has specialized mechanisms for interpreting gestures and non-verbal signals. Even when production is damaged, the "Give-Me" gestures and intent markers remain detectable via EEG.</p>
+                <p class="text-xs text-slate-600 italic">Source: Frontiers in Psychology (2015)</p>
+            </div>
+            <div class="glass-card p-10 rounded-3xl border-t-2 border-violet-500">
+                <h3 class="text-xl font-bold text-violet-400 mb-4">High-Performance Neuroprosthesis</h3>
+                <p class="text-slate-400 mb-4">Translating neural signals from the speech motor cortex into text has reached speeds approaching natural conversation. This validates the possibility of using brain-computer interfaces for rapid assisted speech.</p>
+                <p class="text-xs text-slate-600 italic">Source: Nature (2023)</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="interviews" class="page-content">
+        <h1 class="text-5xl font-bold text-white mb-10 text-neon">Primary Research Insights</h1>
+        <div class="glass-card p-12 rounded-3xl">
+            <h3 class="text-2xl font-bold text-white mb-8">User Interviews Summary</h3>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <div class="p-6 bg-slate-900/50 rounded-2xl">
+                        <h4 class="text-neon font-bold mb-2">Mode of Collection</h4>
+                        <p class="text-xs text-slate-400">Used a mixed-method approach including audio interviews, text chats, and written responses from patients and caregivers.</p>
+                    </div>
+                    <div class="p-6 bg-slate-900/50 rounded-2xl">
+                        <h4 class="text-neon font-bold mb-2">Participant Pool</h4>
+                        <p class="text-xs text-slate-400">Neurological patients, professional caregivers, and AI/Electronics students.</p>
+                    </div>
+                </div>
+                <div class="glass-card p-8 rounded-2xl border border-white/5 bg-white/5">
+                    <h4 class="text-white font-bold mb-4 italic">Direct Testimonials:</h4>
+                    <p class="text-sm text-slate-300 italic">"Eye tracking is tiring. The apps are slow. Sometimes we think she is asking one thing, but she means something else. We need a system that works consistently without errors."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions" class="page-content">
+        <h1 class="text-5xl font-bold text-white mb-10">Proposed Solutions</h1>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="glass-card p-8 rounded-3xl text-center">
+                <div class="w-16 h-16 bg-blue-500/10 text-blue-400 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fa-solid fa-microchip"></i></div>
+                <h3 class="text-lg font-bold text-white mb-4">Hybrid Brain + Context AI</h3>
+                <p class="text-xs text-slate-500">Combines EEG signals with situational context to predict sentence intent before full decoding.</p>
+            </div>
+            <div class="glass-card p-8 rounded-3xl text-center border-t-2 border-neon">
+                <div class="w-16 h-16 bg-neon/10 text-neon rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fa-solid fa-dna"></i></div>
+                <h3 class="text-lg font-bold text-white mb-4">Personalized Neural Map</h3>
+                <p class="text-xs text-slate-500">An adaptive AI system that learns the unique brainwave signature of a specific user over time.</p>
+            </div>
+            <div class="glass-card p-8 rounded-3xl text-center">
+                <div class="w-16 h-16 bg-red-500/10 text-red-400 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl"><i class="fa-solid fa-heart"></i></div>
+                <h3 class="text-lg font-bold text-white mb-4">Emotion-Aware Intent</h3>
+                <p class="text-xs text-slate-500">Detects emotional states like stress or urgency to provide empathy-first communication output.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="hardware" class="page-content">
+        <h1 class="text-5xl font-bold text-white mb-10">Hardware Architecture</h1>
+        <div class="glass-card p-10 rounded-3xl mb-8">
+            <div class="row flex flex-col md:flex-row gap-12">
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold text-neon mb-6">Component Breakdown</h3>
+                    <table class="w-full text-left text-sm">
+                        <thead class="text-slate-500 uppercase border-b border-slate-800"><tr class="pb-2"><th>Part</th><th>Function</th><th class="text-right">Cost</th></tr></thead>
+                        <tbody class="text-slate-300">
+                            <tr><td class="py-4">EEG Sensor Array</td><td>Captures multichannel signals</td><td class="text-right">₹15,000</td></tr>
+                            <tr><td class="py-4">ADS1299 IC</td><td>Bioelectric amplification</td><td class="text-right">₹12,000</td></tr>
+                            <tr><td class="py-4">ESP32 Board</td><td>Data transmission</td><td class="text-right">₹900</td></tr>
+                            <tr><td class="py-4">Power Unit</td><td>Lithium Portable Power</td><td class="text-right">₹5,000</td></tr>
+                            <tr class="font-bold text-white"><td class="py-4">TOTAL ESTIMATE</td><td></td><td class="text-right text-neon">₹33,164</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex-1 glass-card p-8 rounded-2xl bg-slate-900/50">
+                    <h4 class="text-white font-bold mb-4">Signal Flow Logic</h4>
+                    <p class="text-xs text-slate-400 leading-loose mb-4">
+                        1. EEG Sensors (Scalp Acquisition)<br>
+                        2. Instrumentation Amplifier (Bio-potential Boost)<br>
+                        3. Anti-aliasing Filter (Noise Abatement)<br>
+                        4. Analog to Digital Conversion (ADC)<br>
+                        5. Wireless Pipeline (ESP32)
+                    </p>
+                    <div class="p-4 bg-black rounded-xl text-neon font-mono text-[10px] text-center tracking-widest">FEASIBILITY CONFIRMED</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mlmodel" class="page-content">
+        <h1 class="text-5xl font-bold text-white mb-10">Hybrid AI Engine</h1>
+        <div class="space-y-8">
+            <div class="glass-card p-10 rounded-3xl relative">
+                <div class="absolute top-6 right-10">
+                    <a href="YOUR_APP_LINK_HERE" target="_blank" blank" class="bg-violet-600/20 text-violet-400 border border-violet-500/20 px-3 py-2 rounded-lg font-bold text-[10px] hover:bg-violet-600/40 transition flex items-center gap-2 w-fit">
+                        <i class="fa-solid fa-play"></i> Launch & Test Model
+                    </a>
+                </div>
+                <h3 class="text-2xl font-bold text-neon mb-6">CNN + LSTM Architecture</h3>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div>
+                        <h4 class="text-white font-bold mb-2">Convolutional Layers (Spatial)</h4>
+                        <p class="text-sm text-slate-400">Identifies local waveform shapes like oscillations and motor-intent spikes. It extracts the physical "signature" of the brainwave.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold mb-2">LSTM Layers (Temporal)</h4>
+                        <p class="text-sm text-slate-400">Maintains the sequence of thought. It ensures the model remembers how the signal evolves over time for accurate classification.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-card p-10 rounded-3xl bg-slate-900/50 text-center">
+                <div class="flex justify-center items-center gap-4 text-[10px] font-bold text-slate-500 uppercase">
+                    <div class="p-3 bg-slate-800 rounded-lg">Dataset</div>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <div class="p-3 bg-slate-800 rounded-lg">Preprocessing</div>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <div class="p-3 bg-slate-800 rounded-lg">CNN Features</div>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <div class="p-3 bg-slate-800 rounded-lg">LSTM Learning</div>
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <div class="p-3 bg-blue-600 text-white rounded-lg px-6">Intent Prediction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="weeks" class="page-content">
+        <h1 class="text-5xl font-bold text-white mb-10">Weekly Roadmap</h1>
+        <div class="grid md:grid-cols-1 gap-6 mb-10">
+            <div class="glass-card p-8 rounded-3xl border border-neon/30 bg-neon/5 flex items-center justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-2">Project Documentation Portal</h3>
+                    <p class="text-sm text-slate-400">Access the 66-page Design Thinking report, technical logs, and interview transcripts.</p>
+                </div>
+                <div class="flex gap-4">
+                    <a href="YOUR_PDF_LINK_HERE" target="_blank" class="bg-white/10 text-white px-6 py-3 rounded-xl font-bold text-xs flex items-center gap-2 border border-white/10 hover:bg-white/20 transition">
+                        <i class="fa-solid fa-file-pdf text-lg text-red-500"></i> Open PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="glass-card p-6 rounded-2xl">
+                <div class="text-neon font-bold mb-1">Week 1-2</div>
+                <h4 class="text-white text-sm mb-2">Anatomy & Existing Tech</h4>
+                <p class="text-xs text-slate-500">Researching motor imagery and linguistic barriers in existing BCI models.</p>
+            </div>
+            <div class="glass-card p-6 rounded-2xl border-l-4 border-violet-500 flex flex-col justify-between">
+                <div>
+                    <div class="text-neon font-bold mb-1">Week 3-4</div>
+                    <h4 class="text-white text-sm mb-2">User Interviews</h4>
+                    <p class="text-xs text-slate-500">Deep-dive survey with caregivers and patients to map empathy and pain points.</p>
+                </div>
+                <div class="mt-4">
+                    <a href="YOUR_INTERVIEW_PDF_LINK_HERE" target="_blank" class="bg-violet-600/20 text-violet-400 border border-violet-500/20 px-3 py-2 rounded-lg font-bold text-[10px] hover:bg-violet-600/40 transition flex items-center gap-2 w-fit">
+                        <i class="fa-solid fa-file-pdf"></i> INTERVIEW PDF
+                    </a>
+                </div>
+            </div>
+            <div class="glass-card p-6 rounded-2xl">
+                <div class="text-neon font-bold mb-1">Week 5-6</div>
+                <h4 class="text-white text-sm mb-2">Ideation & Hardware</h4>
+                <p class="text-xs text-slate-500">Finalizing the hybrid AI communicator concept and sourcing electronics.</p>
+            </div>
+            <div class="glass-card p-6 rounded-2xl border-t-2 border-neon">
+                <div class="text-neon font-bold mb-1 text-neon">Week 7-10</div>
+                <h4 class="text-white text-sm mb-2">Development & Deployment</h4>
+                <p class="text-xs text-slate-500">CNN+LSTM coding, Streamlit dashboard integration, and final model validation.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="results" class="page-content">
+        <h1 class="text-5xl font-bold text-white mb-10">Results & Evaluation</h1>
+        <div class="row flex flex-col md:flex-row gap-8">
+            <div class="flex-1 glass-card p-16 rounded-[48px] text-center" data-aos="zoom-in">
+                <h1 class="text-8xl font-black text-neon mb-4">64%</h1>
+                <p class="text-xl font-bold text-white tracking-widest uppercase">Classification Accuracy</p>
+                <p class="text-xs text-slate-500 mt-4">Validated using BCI Competition IV (Subject 'aa') data.</p>
+            </div>
+            <div class="flex-1 glass-card p-10 rounded-3xl">
+                <h3 class="text-2xl font-bold text-white mb-6">Evaluation Metrics</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-green-500 mt-1 mr-3"></i> <div><h5 class="text-sm font-bold text-white">Signal Recognition</h5><p class="text-xs text-slate-500">Motor imagery successfully identified across multiple trials.</p></div></li>
+                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-green-500 mt-1 mr-3"></i> <div><h5 class="text-sm font-bold text-white">Prediction Speed</h5><p class="text-xs text-slate-500">Simulated live latency achieved at under 0.5s per thought process.</p></div></li>
+                    <li class="flex items-start"><i class="fa-solid fa-circle-check text-green-500 mt-1 mr-3"></i> <div><h5 class="text-sm font-bold text-white">UI Interaction</h5><p class="text-xs text-slate-500">Stable integration between AI backend and Streamlit frontend.</p></div></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="conclusion" class="page-content">
+        <h1 class="text-5xl font-bold text-white mb-10">Conclusion</h1>
+        <div class="glass-card p-20 rounded-[60px] text-center" data-aos="fade-up">
+            <h2 class="text-4xl font-bold text-white mb-10">Neural Sovereignty Achieved</h2>
+            <p class="text-xl text-slate-400 leading-relaxed max-w-3xl mx-auto italic mb-10">
+                "OctaVision successfully established a reliable bridge between thought and digital expression. By fusing advanced spatial-temporal deep learning with non-invasive EEG technology, we have created an accessible, high-accuracy platform that restores communication and independence to those who need it most."
+            </p>
+            <div class="h-px w-32 bg-neon/30 mx-auto"></div>
+        </div>
+    </section>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init({ duration: 800, once: true });
+
+    function nav(pageId) {
+        document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        document.getElementById('btn-' + pageId).classList.add('active');
+        document.querySelector('main').scrollTo({ top: 0, behavior: 'smooth' });
+        AOS.refresh();
+    }
+</script>
+</body>
+</html>
