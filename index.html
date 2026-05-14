@@ -59,9 +59,24 @@ transition: transform 0.3s ease;
 }
 #sidebar-logo { font-size: 1.8rem; font-weight: 900; color: #fff; font-style: italic; margin-bottom: 40px; padding: 0 8px; }
 #sidebar-logo span { color: #00f2ff; text-shadow: 0 0 10px rgba(0,242,255,0.4); }
-#close-sidebar { display: none; background: none; border: none; color: #64748b; font-size: 1.5rem; cursor: pointer; }
+#close-sidebar{
+    display:none;
+    position:absolute;
+    top:18px;
+    right:18px;
+    width:42px;
+    height:42px;
+    align-items:center;
+    justify-content:center;
+    border:none;
+    background:none;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+    z-index:6000;
+}
 #close-sidebar:hover { color: #fff; }
-.sidebar-logo-row { display: flex; justify-content: space-between; align-items: center; }
+.sidebar-logo-row { display: flex; justify-content: space-between; align-items: center; position: relative; }
 .section-label {
 font-size: 10px;
 text-transform: uppercase;
@@ -430,21 +445,21 @@ pointer-events: none;
     width: 280px;
     max-width: 85vw;
     transform: translateX(-100%);
-    z-index: 1000;
+    z-index: 5000;
     padding: 20px 16px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
   #sidebar.open { transform: translateX(0); }
   #overlay.open { display: block; }
-  #close-sidebar { display: block; }
+  #close-sidebar { display: flex; }
 
   /* Topbar fixed at top */
   #topbar {
     position: fixed;
     top: 0; left: 0; right: 0;
     height: 57px;
-    z-index: 1001;
+    z-index: 100;
   }
 
   /* Grid collapses */
@@ -1319,6 +1334,7 @@ function openSidebar() {
 document.getElementById('sidebar').classList.add('open');
 document.getElementById('overlay').classList.add('open');
 document.getElementById('menu-btn').innerHTML = '<i class="fa-solid fa-xmark"></i>';
+document.getElementById("menu-btn").style.display = "none";
 }
 
 function closeSidebar() {
@@ -1326,6 +1342,7 @@ if (window.innerWidth <= 900) {
 document.getElementById('sidebar').classList.remove('open');
 document.getElementById('overlay').classList.remove('open');
 document.getElementById('menu-btn').innerHTML = '<i class="fa-solid fa-bars"></i>';
+document.getElementById("menu-btn").style.display = "block";
 }
 }
 </script>
