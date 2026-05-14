@@ -144,6 +144,115 @@
     }
     .sch-card svg { width: 100%; height: auto; display: block; border-radius: 12px; }
 
+    /* ── Architecture Image Card ── */
+    .arch-img-card {
+      background: rgba(15,23,42,0.85);
+      border: 1px solid rgba(0,242,255,0.15);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .arch-img-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,242,255,0.12);
+    }
+    .arch-img-card .arch-img-header {
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid rgba(0,242,255,0.1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .arch-img-card .arch-img-header .arch-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .arch-img-card .arch-img-header h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      margin: 0;
+    }
+    .arch-img-card .arch-img-header p {
+      font-size: 10px;
+      color: #475569;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 2px;
+    }
+    .arch-img-wrap {
+      position: relative;
+      overflow: hidden;
+      background: #000;
+    }
+    .arch-img-wrap img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+    .arch-img-card:hover .arch-img-wrap img { transform: scale(1.04); }
+    .arch-img-wrap .arch-img-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(to top, rgba(10,22,40,0.95), transparent);
+    }
+    .arch-img-body {
+      padding: 24px;
+    }
+    .arch-img-body p {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .arch-spec-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .arch-spec-item {
+      background: rgba(0,242,255,0.04);
+      border: 1px solid rgba(0,242,255,0.08);
+      border-radius: 10px;
+      padding: 10px 14px;
+    }
+    .arch-spec-item .spec-label {
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #475569;
+      margin-bottom: 4px;
+    }
+    .arch-spec-item .spec-value {
+      font-size: 12px;
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+    .arch-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+    .arch-tag-cyan { background: rgba(0,242,255,0.1); color: #00f2ff; border: 1px solid rgba(0,242,255,0.2); }
+    .arch-tag-violet { background: rgba(139,92,246,0.1); color: #a78bfa; border: 1px solid rgba(139,92,246,0.2); }
+    .arch-tag-green { background: rgba(0,255,136,0.1); color: #00ff88; border: 1px solid rgba(0,255,136,0.2); }
+    .arch-tag-amber { background: rgba(245,158,11,0.1); color: #f59e0b; border: 1px solid rgba(245,158,11,0.2); }
+
     /* ── Utilities ── */
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
@@ -317,6 +426,8 @@
       .stat-big { font-size: 56px; }
       .p-16 { padding: 32px; }
       .p-12 { padding: 32px; }
+      .arch-spec-grid { grid-template-columns: 1fr; }
+      .arch-img-wrap img { height: 220px; }
     }
   </style>
 </head>
@@ -351,6 +462,7 @@
       <button class="nav-btn" onclick="nav('mlmodel')"><i class="fa-solid fa-robot"></i>Hybrid AI Engine</button>
       <button class="nav-btn" onclick="nav('weeks')"><i class="fa-solid fa-calendar-days"></i>Weekly Roadmap</button>
       <button class="nav-btn" onclick="nav('results')"><i class="fa-solid fa-chart-line"></i>Results &amp; Evaluation</button>
+      <button class="nav-btn" onclick="nav('architecture')"><i class="fa-solid fa-layer-group"></i>Architecture &amp; Circuits</button>
       <button class="nav-btn" onclick="nav('future')"><i class="fa-solid fa-rocket"></i>Future Scope</button>
       <button class="nav-btn" onclick="nav('conclusion')"><i class="fa-solid fa-flag-checkered"></i>Conclusion</button>
     </nav>
@@ -706,6 +818,364 @@
       </div>
     </div>
 
+    <!-- ════ ARCHITECTURE & CIRCUITS (NEW SECTION) ════ -->
+    <div id="page-architecture" class="page">
+
+      <!-- Header -->
+      <div class="flex items-center justify-between mb-4" style="flex-wrap:wrap;gap:16px;">
+        <div>
+          <h1 class="text-5xl font-black text-white" style="margin-bottom:8px;">Architecture &amp; Circuits</h1>
+          <p class="text-slate text-sm">Visual documentation of all four core design layers — hardware circuits, AI software stack, full system pipeline, and physical prototype.</p>
+        </div>
+        <span class="tag" style="background:rgba(0,242,255,0.08);border-color:rgba(0,242,255,0.3);">4 DIAGRAMS</span>
+      </div>
+
+      <!-- Intro strip -->
+      <div class="glass p-8 mb-10" style="background:linear-gradient(135deg,rgba(0,242,255,0.05),rgba(139,92,246,0.05));border:1px solid rgba(0,242,255,0.15);">
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:220px;">
+            <h3 class="text-xl font-bold text-white mb-2">Design Documentation</h3>
+            <p class="text-slate text-xs leading-relaxed">This section presents the four principal diagrams of OctaVision: the analog hardware circuit, the AI software architecture, the end-to-end system overview, and the complete assembled hardware. Each diagram is accompanied by a detailed technical description.</p>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <div class="terminal-badge" style="font-size:9px;padding:10px 16px;">HW CIRCUIT</div>
+            <div class="terminal-badge" style="font-size:9px;padding:10px 16px;color:#a78bfa;">SW ARCH</div>
+            <div class="terminal-badge" style="font-size:9px;padding:10px 16px;color:#00ff88;">SYSTEM</div>
+            <div class="terminal-badge" style="font-size:9px;padding:10px 16px;color:#f59e0b;">PROTOTYPE</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DIAGRAM 1: Hardware Circuit ── -->
+      <div style="margin-bottom:48px;">
+        <!-- Number badge + title -->
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(0,242,255,0.1);border:2px solid #00f2ff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-size:18px;font-weight:900;color:#00f2ff;">1</span>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-white">Hardware Circuit Diagram</h2>
+            <p class="text-xs text-slate-dim" style="margin-top:2px;">Analog Front-End · ADS1299 · ESP32 · Power Management</p>
+          </div>
+        </div>
+
+        <div class="arch-img-card">
+          <div class="arch-img-header">
+            <div class="arch-icon" style="background:rgba(0,242,255,0.1);">
+              <i class="fa-solid fa-microchip" style="color:#00f2ff;"></i>
+            </div>
+            <div>
+              <h4>EEG Analog Front-End &amp; Microcontroller Circuit</h4>
+              <p>PCB schematic · Signal chain · Power rails · SPI interface</p>
+            </div>
+          </div>
+          <div class="arch-img-wrap">
+            <img src="hardware_circuit.png" alt="Hardware Circuit Diagram — EEG Analog Front-End with ADS1299 and ESP32" />
+            <div class="arch-img-overlay"></div>
+          </div>
+          <div class="arch-img-body">
+            <p>
+              The hardware circuit forms the physical backbone of OctaVision. At its core sits the <strong style="color:#00f2ff;">Texas Instruments ADS1299</strong> — a precision, low-noise, 8-channel, 24-bit analog-to-digital converter specifically designed for EEG and biopotential applications. Raw neural signals from the dry electrode cap (μV range) are first passed through an <strong style="color:#8b5cf6;">instrumentation amplifier</strong> achieving a Common-Mode Rejection Ratio (CMRR) greater than 80 dB, ensuring that environmental noise and power-line interference are suppressed before digitization.
+            </p>
+            <p>
+              A <strong style="color:#f59e0b;">5th-order Butterworth bandpass filter</strong> (0.5 Hz – 40 Hz) isolates the motor cortex frequency bands (Mu: 8–12 Hz, Beta: 13–30 Hz) relevant to motor imagery classification. The digitized output travels over a 4-wire <strong style="color:#00ff88;">SPI bus</strong> (SCLK, MOSI, MISO, /CS + DRDY interrupt line) to the ESP32 microcontroller. Power is regulated via a dual-rail supply: an <strong style="color:#ef4444;">AMS1117 LDO</strong> provides 3.3 V DVDD for digital logic (ESP32, DSP), while an <strong style="color:#f59e0b;">MT3608 boost converter</strong> steps up the 7.4 V LiPo battery to 5 V AVDD for the ADS1299 analog front-end. A shared GND reference plane eliminates ground-loop noise.
+            </p>
+            <!-- Tag row -->
+            <div style="margin-top:12px;">
+              <span class="arch-tag arch-tag-cyan"><i class="fa-solid fa-bolt"></i>ADS1299 AFE</span>
+              <span class="arch-tag arch-tag-green"><i class="fa-solid fa-wifi"></i>ESP32 WiFi</span>
+              <span class="arch-tag arch-tag-amber"><i class="fa-solid fa-filter"></i>Butterworth BPF</span>
+              <span class="arch-tag arch-tag-violet"><i class="fa-solid fa-battery-full"></i>Dual-Rail Power</span>
+            </div>
+            <!-- Spec grid -->
+            <div class="arch-spec-grid">
+              <div class="arch-spec-item">
+                <div class="spec-label">ADC Resolution</div>
+                <div class="spec-value">24-bit · 8 channels</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">CMRR</div>
+                <div class="spec-value">&gt; 80 dB</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">Passband</div>
+                <div class="spec-value">0.5 Hz – 40 Hz</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">SPI Clock</div>
+                <div class="spec-value">Up to 20 MHz</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">Digital Supply</div>
+                <div class="spec-value">DVDD = 3.3 V</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">Analog Supply</div>
+                <div class="spec-value">AVDD = 5.0 V</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DIAGRAM 2: Software Architecture ── -->
+      <div style="margin-bottom:48px;">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(139,92,246,0.1);border:2px solid #8b5cf6;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-size:18px;font-weight:900;color:#8b5cf6;">2</span>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-white">Software Architecture</h2>
+            <p class="text-xs text-slate-dim" style="margin-top:2px;">CNN + LSTM pipeline · Python stack · Streamlit UI · TensorFlow</p>
+          </div>
+        </div>
+
+        <div class="arch-img-card" style="border-color:rgba(139,92,246,0.2);">
+          <div class="arch-img-header" style="border-bottom-color:rgba(139,92,246,0.15);">
+            <div class="arch-icon" style="background:rgba(139,92,246,0.1);">
+              <i class="fa-solid fa-layer-group" style="color:#a78bfa;"></i>
+            </div>
+            <div>
+              <h4>Hybrid Deep Learning Software Stack</h4>
+              <p>Data pipeline · Feature extraction · LSTM memory · Classification · Output</p>
+            </div>
+          </div>
+          <div class="arch-img-wrap">
+            <img src="software_architecture.png" alt="Software Architecture — CNN LSTM Deep Learning Pipeline" />
+            <div class="arch-img-overlay" style="background:linear-gradient(to top,rgba(15,10,42,0.95),transparent);"></div>
+          </div>
+          <div class="arch-img-body">
+            <p>
+              The software pipeline begins the moment raw EEG data arrives from the ESP32 over UDP. A Python receiver buffers the incoming stream into <strong style="color:#8b5cf6;">750 ms epochs</strong> (75 samples at 100 Hz per channel × 118 channels), which are then passed through a dual-stage preprocessing block: a 50 Hz notch filter to remove power-line interference, followed by the same 5th-order Butterworth BPF (0.5–40 Hz). Each epoch is Z-score normalised channel-wise to remove DC offset and amplitude variance.
+            </p>
+            <p>
+              The preprocessed tensor enters the <strong style="color:#00f2ff;">CNN block</strong>: three stacked Conv1D layers (32 → 64 → 128 filters, kernel size 3, ReLU activation) with interleaved MaxPooling layers (stride 2) that progressively compress temporal resolution while amplifying discriminative spatial patterns — effectively learning the "shape" of motor-imagery brainwaves. The flattened feature map is reshaped and fed into a <strong style="color:#00ff88;">2-layer LSTM</strong> (64 units → 32 units) which captures the temporal dynamics and sequential memory of signal evolution. A final Dense layer with Sigmoid activation produces a probability P ∈ [0, 1]. P &gt; 0.5 → <strong style="color:#00ff88;">YES (right hand)</strong>; P ≤ 0.5 → <strong style="color:#ef4444;">NO (right foot)</strong>. The decision is routed to <strong style="color:#f59e0b;">Text-to-Speech</strong>, the Streamlit dashboard, or IoT device control.
+            </p>
+            <div style="margin-top:12px;">
+              <span class="arch-tag arch-tag-violet"><i class="fa-solid fa-brain"></i>TensorFlow / Keras</span>
+              <span class="arch-tag arch-tag-cyan"><i class="fa-solid fa-code"></i>Python 3.11</span>
+              <span class="arch-tag arch-tag-green"><i class="fa-solid fa-window-maximize"></i>Streamlit</span>
+              <span class="arch-tag arch-tag-amber"><i class="fa-solid fa-chart-line"></i>SciPy / NumPy</span>
+            </div>
+            <div class="arch-spec-grid">
+              <div class="arch-spec-item">
+                <div class="spec-label">Model Type</div>
+                <div class="spec-value">CNN + LSTM Hybrid</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">Accuracy</div>
+                <div class="spec-value">64% (Subject 'aa')</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">Training</div>
+                <div class="spec-value">100 Epochs · Adam</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">Loss</div>
+                <div class="spec-value">BCE · Dropout 0.5</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">Input Shape</div>
+                <div class="spec-value">118 ch × 750 ms</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">Output</div>
+                <div class="spec-value">Binary: YES / NO</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DIAGRAM 3: System Overview ── -->
+      <div style="margin-bottom:48px;">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(0,255,136,0.1);border:2px solid #00ff88;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-size:18px;font-weight:900;color:#00ff88;">3</span>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-white">System Overview</h2>
+            <p class="text-xs text-slate-dim" style="margin-top:2px;">End-to-end signal flow · Brain to output · Complete BCI pipeline</p>
+          </div>
+        </div>
+
+        <div class="arch-img-card" style="border-color:rgba(0,255,136,0.2);">
+          <div class="arch-img-header" style="border-bottom-color:rgba(0,255,136,0.15);">
+            <div class="arch-icon" style="background:rgba(0,255,136,0.1);">
+              <i class="fa-solid fa-diagram-project" style="color:#00ff88;"></i>
+            </div>
+            <div>
+              <h4>Complete OctaVision End-to-End System Pipeline</h4>
+              <p>Brain · EEG Cap · AFE · ESP32 · AI Engine · Output devices</p>
+            </div>
+          </div>
+          <div class="arch-img-wrap">
+            <img src="system_overview.png" alt="System Overview — Complete BCI Pipeline from Brain to Output" />
+            <div class="arch-img-overlay" style="background:linear-gradient(to top,rgba(5,15,10,0.95),transparent);"></div>
+          </div>
+          <div class="arch-img-body">
+            <p>
+              The OctaVision system overview captures the complete signal journey from neural intent to meaningful communication output. The pipeline begins in the <strong style="color:#00f2ff;">motor cortex</strong> — specifically the C3, Cz, and C4 electrode positions — where imagined motor movements (right hand = YES, right foot = NO) generate distinct Event-Related Desynchronisation (ERD) patterns in the Mu (8–12 Hz) and Beta (13–30 Hz) frequency bands.
+            </p>
+            <p>
+              The <strong style="color:#8b5cf6;">118-channel dry-electrode EEG cap</strong> captures these microvolt-level potentials and routes them to the ADS1299 AFE board, which amplifies, filters, and digitizes the signals before transmitting them via SPI to the <strong style="color:#00ff88;">ESP32</strong>. The ESP32 streams the data over 2.4 GHz WiFi (UDP, port 1234) to a Python server with a real-time latency under 50 ms. The AI engine (CNN + LSTM) processes each incoming epoch and produces a binary prediction, which is immediately delivered to three possible output channels: <strong style="color:#f59e0b;">Text-to-Speech</strong> synthesis for audible communication, the <strong style="color:#00f2ff;">Streamlit web dashboard</strong> for visual confirmation, and <strong style="color:#ef4444;">IoT device control</strong> for smart-home and assistive robotics integration.
+            </p>
+            <div style="margin-top:12px;">
+              <span class="arch-tag arch-tag-cyan"><i class="fa-solid fa-brain"></i>Motor Cortex EEG</span>
+              <span class="arch-tag arch-tag-green"><i class="fa-solid fa-wifi"></i>WiFi UDP Stream</span>
+              <span class="arch-tag arch-tag-violet"><i class="fa-solid fa-robot"></i>CNN + LSTM AI</span>
+              <span class="arch-tag arch-tag-amber"><i class="fa-solid fa-volume-high"></i>TTS Output</span>
+            </div>
+            <div class="arch-spec-grid">
+              <div class="arch-spec-item">
+                <div class="spec-label">EEG Channels</div>
+                <div class="spec-value">118 channels</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">Sample Rate</div>
+                <div class="spec-value">100 Hz</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">WiFi Latency</div>
+                <div class="spec-value">&lt; 50 ms</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">Inference Time</div>
+                <div class="spec-value">&lt; 500 ms</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">Outputs</div>
+                <div class="spec-value">TTS · UI · IoT</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">Classes</div>
+                <div class="spec-value">Binary: YES / NO</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DIAGRAM 4: Full Hardware Image ── -->
+      <div style="margin-bottom:48px;">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(245,158,11,0.1);border:2px solid #f59e0b;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-size:18px;font-weight:900;color:#f59e0b;">4</span>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-white">Full Hardware Prototype</h2>
+            <p class="text-xs text-slate-dim" style="margin-top:2px;">Physical assembly · Component layout · Wiring · EEG headset</p>
+          </div>
+        </div>
+
+        <div class="arch-img-card" style="border-color:rgba(245,158,11,0.2);">
+          <div class="arch-img-header" style="border-bottom-color:rgba(245,158,11,0.15);">
+            <div class="arch-icon" style="background:rgba(245,158,11,0.1);">
+              <i class="fa-solid fa-screwdriver-wrench" style="color:#f59e0b;"></i>
+            </div>
+            <div>
+              <h4>Assembled OctaVision Hardware Prototype</h4>
+              <p>EEG headset · ADS1299 board · ESP32 · Battery · Wiring harness</p>
+            </div>
+          </div>
+          <div class="arch-img-wrap">
+            <img src="hardware_full.png" alt="Full Hardware Prototype — Assembled OctaVision BCI System" style="height:380px;" />
+            <div class="arch-img-overlay" style="background:linear-gradient(to top,rgba(20,12,5,0.95),transparent);"></div>
+          </div>
+          <div class="arch-img-body">
+            <p>
+              The assembled OctaVision prototype brings together all hardware components into a portable, bench-testable unit. The <strong style="color:#00f2ff;">EEG dry-electrode headset</strong> (118-channel, 10–20 positioning) connects via a shielded ribbon cable to the <strong style="color:#f59e0b;">ADS1299 AFE breakout board</strong>, which houses the instrumentation amplifier, precision band-pass filter, and 24-bit ADC. The AFE board communicates over SPI to the <strong style="color:#00ff88;">ESP32 development board</strong>, which integrates a 2.4 GHz antenna for WiFi UDP streaming to the host Python server.
+            </p>
+            <p>
+              Power is supplied by a <strong style="color:#f59e0b;">7.4 V 2 Ah LiPo battery pack</strong> regulated through the dual-rail power module (3.3 V DVDD via AMS1117 LDO + 5 V AVDD via MT3608 boost converter). All connections are routed through a color-coded wiring harness to prevent cross-coupling. The entire hardware stack — excluding the EEG cap — fits within a compact enclosure suitable for wearable integration. The total hardware cost of the prototype is <strong style="color:#00f2ff;">₹33,164</strong>, making it among the lowest-cost multi-channel BCI hardware implementations currently documented.
+            </p>
+            <div style="margin-top:12px;">
+              <span class="arch-tag arch-tag-amber"><i class="fa-solid fa-helmet-safety"></i>EEG Dry Cap</span>
+              <span class="arch-tag arch-tag-cyan"><i class="fa-solid fa-circuit-board"></i>ADS1299 Board</span>
+              <span class="arch-tag arch-tag-green"><i class="fa-solid fa-microchip"></i>ESP32 MCU</span>
+              <span class="arch-tag arch-tag-violet"><i class="fa-solid fa-battery-full"></i>7.4V LiPo</span>
+            </div>
+            <div class="arch-spec-grid">
+              <div class="arch-spec-item">
+                <div class="spec-label">Total Cost</div>
+                <div class="spec-value">₹33,164</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">EEG Channels</div>
+                <div class="spec-value">118 dry electrodes</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">Battery</div>
+                <div class="spec-value">7.4 V · 2 Ah LiPo</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">MCU</div>
+                <div class="spec-value">ESP32 240 MHz</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">AFE Chip</div>
+                <div class="spec-value">TI ADS1299</div>
+              </div>
+              <div class="arch-spec-item">
+                <div class="spec-label">Form Factor</div>
+                <div class="spec-value">Portable / Wearable</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary comparison table -->
+      <div class="glass p-10" style="margin-bottom:8px;">
+        <h3 class="text-xl font-bold text-white mb-6">Architecture Summary Comparison</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align:left;padding-right:20px;">Diagram</th>
+                <th style="text-align:left;padding-right:20px;">Domain</th>
+                <th style="text-align:left;padding-right:20px;">Key Components</th>
+                <th style="text-align:left;padding-right:20px;">Interface</th>
+                <th style="text-align:right;">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span style="color:#00f2ff;font-weight:700;">① Hardware Circuit</span></td>
+                <td>Analog Electronics</td>
+                <td>ADS1299 · LDO · Boost · SPI</td>
+                <td>PCB Traces</td>
+                <td style="text-align:right;color:#00ff88;">✓ Designed</td>
+              </tr>
+              <tr>
+                <td><span style="color:#a78bfa;font-weight:700;">② Software Arch</span></td>
+                <td>Deep Learning</td>
+                <td>CNN1D × 3 · LSTM × 2 · Dense</td>
+                <td>Python / TF</td>
+                <td style="text-align:right;color:#00ff88;">✓ Trained</td>
+              </tr>
+              <tr>
+                <td><span style="color:#00ff88;font-weight:700;">③ System Overview</span></td>
+                <td>Full Pipeline</td>
+                <td>Brain → EEG → AFE → AI → Output</td>
+                <td>WiFi UDP</td>
+                <td style="text-align:right;color:#00ff88;">✓ Simulated</td>
+              </tr>
+              <tr>
+                <td><span style="color:#f59e0b;font-weight:700;">④ HW Prototype</span></td>
+                <td>Physical Build</td>
+                <td>Cap · ADS1299 · ESP32 · Battery</td>
+                <td>SPI + WiFi</td>
+                <td style="text-align:right;color:#f59e0b;">⚙ Prototype</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <!-- ════ END ARCHITECTURE & CIRCUITS ════ -->
+
     <!-- ════ FUTURE ════ -->
     <div id="page-future" class="page">
       <h1 class="text-5xl font-black text-white mb-10">Future Scope</h1>
@@ -748,19 +1218,16 @@
 
 <script>
   // ── Navigation ──
-  const pages = ['home','overview','problem','empathy','research','interviews','solutions','hardware','dataset','mlmodel','weeks','results','future','conclusion'];
+  const pages = ['home','overview','problem','empathy','research','interviews','solutions','hardware','dataset','mlmodel','weeks','results','architecture','future','conclusion'];
 
   function nav(id) {
-    // Hide all pages
     pages.forEach(p => {
       const el = document.getElementById('page-' + p);
       if (el) el.classList.remove('active');
     });
-    // Show target
     const target = document.getElementById('page-' + id);
     if (target) target.classList.add('active');
 
-    // Update nav buttons
     document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelectorAll('.nav-btn').forEach(btn => {
       if (btn.getAttribute('onclick') === "nav('" + id + "')") {
@@ -768,10 +1235,7 @@
       }
     });
 
-    // Scroll main to top
     document.getElementById('main').scrollTo({ top: 0, behavior: 'smooth' });
-
-    // Close sidebar on mobile
     closeSidebar();
   }
 
